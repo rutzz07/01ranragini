@@ -46,7 +46,7 @@ const productsData = [
     color: "green",
     featured: true,
     stock: false,
-    image: "/images/product3.webp",
+    image: "/images/product4.webp",
     sale: true,
   },
 ];

@@ -1,8 +1,12 @@
 import { useParams } from "react-router-dom";
 import products from "../data/products";
+import { useWishlist } from "../context/WishlistContext";
+import { FaHeart } from "react-icons/fa";
 
 export default function ProductDetails() {
+  const { toggleWishlist, isInWishlist } = useWishlist();
   const { slug } = useParams();
+  const { addToWishlist } = useWishlist();   // ✅ add this
 
   const product = products.find((item) => item.slug === slug);
 
@@ -29,9 +33,25 @@ export default function ProductDetails() {
 
         {/* Details Section */}
         <div>
-          <h1 className="text-3xl font-semibold">
-            {product.name}
-          </h1>
+
+          {/* Title + Heart */}
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-semibold">
+              {product.name}
+            </h1>
+
+          <button
+  onClick={() => toggleWishlist(product)}
+  className={`text-xl transition ${
+    isInWishlist(product.id)
+      ? "text-pink-600"
+      : "text-gray-400 hover:text-pink-600"
+  }`}
+>
+  <FaHeart />
+</button>
+
+          </div>
 
           <div className="mt-4 text-2xl">
             <span className="line-through text-gray-400 mr-3">

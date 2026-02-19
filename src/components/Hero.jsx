@@ -31,11 +31,11 @@ export default function Hero() {
       modules={[Autoplay, Navigation, EffectFade]}
       effect="fade"
       fadeEffect={{ crossFade: true }}
-      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      autoplay={{ delay: 4000, disableOnInteraction: false }}
       navigation
       loop
       speed={1000}
-      className="min-h-[500px] md:h-[650px]"
+      className="w-full h-[420px] sm:h-[520px] md:h-[650px]"
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
@@ -48,73 +48,42 @@ export default function Hero() {
 
 function HeroSlide({ image, title, subtitle }) {
   return (
-    <div
-      className="
-        relative 
-        min-h-[500px] md:h-[650px] 
-        bg-cover 
-        bg-left md:bg-center 
-        flex 
-        items-center
-      "
-      style={{ backgroundImage: `url(${image})` }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/10"></div>
+    <div className="relative w-full h-[420px] sm:h-[520px] md:h-[650px] overflow-hidden">
+
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-left md:bg-center zoom-animation"
+        style={{ backgroundImage: `url(${image})` }}
+      ></div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-l from-black/70 via-black/40 to-transparent"></div>
 
       {/* Content */}
-      <div
-        className="
-          relative z-10
-          max-w-xl md:max-w-3xl
-          px-6 md:px-0
-          ml-6 md:ml-auto
-          md:mr-24
-          py-16 md:py-0
-        "
-      >
-        <h1
-          className="
-            whitespace-pre-line
-            text-3xl md:text-6xl
-            font-bold
-            leading-tight
-            text-white
-          "
-        >
-          {title}
-        </h1>
+      <div className="absolute inset-0 flex items-center md:justify-end justify-center">
+        <div className="w-full px-6 md:px-20">
 
-        <div
-          className="
-            bg-yellow-500
-            inline-block
-            px-4 md:px-6
-            py-2 md:py-3
-            rounded-full
-            mt-4 md:mt-6
-            text-sm md:text-lg
-            font-medium
-          "
-        >
-          {subtitle}
-        </div>
+          <div className="max-w-2xl md:text-right text-center ml-auto">
 
-        <div className="mt-4 md:mt-6">
-          <button
-            className="
-              bg-black text-white
-              px-6 md:px-8
-              py-2 md:py-3
-              rounded-full
-              hover:bg-gray-800
-              transition
-            "
-          >
-            SHOP NOW
-          </button>
+            <h1 className="whitespace-pre-line text-2xl sm:text-4xl md:text-6xl font-bold leading-tight text-white">
+              {title}
+            </h1>
+
+            <div className="bg-yellow-500 inline-block px-4 md:px-6 py-2 md:py-3 rounded-full mt-4 md:mt-6 text-sm sm:text-base md:text-lg font-medium text-black">
+              {subtitle}
+            </div>
+
+            {/* <div className="mt-6 md:mt-8">
+              <button className="bg-black text-white px-6 md:px-10 py-2 md:py-4 rounded-full hover:bg-gray-800 transition text-sm md:text-base">
+                SHOP NOW
+              </button>
+            </div> */}
+
+          </div>
+
         </div>
       </div>
+
     </div>
   );
 }

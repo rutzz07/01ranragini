@@ -1,31 +1,8 @@
 import { FaRegCalendarAlt } from "react-icons/fa";
+import { blogs } from "../data/blogs";
+import { Link } from "react-router-dom";
 
-const blogs = [
-  {
-    image: "/images/blog1.webp",
-    date: "December 4, 2022",
-    title: "The Hidden Dangers of Poor Menstrual Hygiene & How Anion Pads Can Help",
-    desc: "Menstrual health is one of the most overlooked aspects of women’s wellness. In India, many women still use unsafe alternatives...",
-  },
-  {
-    image: "/images/blog2.webp",
-    date: "October 4, 2022",
-    title: "Natural Ways to Boost Immunity & Stay Healthy Every Day",
-    desc: "With busy lifestyles and increasing pollution, our body’s immune system often struggles to fight infections and diseases...",
-  },
-  {
-    image: "/images/blog3.webp",
-    date: "August 4, 2022",
-    title: "Experience Comfort & Protection with Anion Chip Sanitary Pads",
-    desc: "Discover the perfect blend of comfort, hygiene, and protection designed to keep you feeling fresh and confident all day...",
-  },
-  {
-    image: "/images/blog4.webp",
-    date: "June 4, 2022",
-    title: "Panch Tulsi Ark & Jeewan Amrut Juice – Daily Vitality for You",
-    desc: "Boost your daily vitality with the natural goodness of Panch Tulsi Ark and Jeewan Amrut Juice...",
-  },
-];
+
 
 export default function Blog() {
   return (
@@ -36,23 +13,24 @@ export default function Blog() {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {blogs.map((blog, index) => (
-          <div
-            key={index}
-            className="group cursor-pointer"
+        {blogs.map((blog) => (
+          <Link
+            key={blog.slug}
+            to={`/blog/${blog.slug}`}
+            className="group block"
           >
             {/* Image */}
-            <div className="overflow-hidden rounded-lg">
+            <div className="overflow-hidden rounded-lg aspect-[4/3]">
               <img
                 src={blog.image}
-                alt="blog"
-                className="w-full h-64 object-cover group-hover:scale-105 transition duration-300"
+                alt={blog.title}
+                className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
               />
             </div>
 
             {/* Category */}
             <p className="text-xs text-gray-500 mt-4 uppercase tracking-wider">
-              NATURAL , RANRAGINI PRODUCTS
+              {blog.category}
             </p>
 
             {/* Date */}
@@ -70,7 +48,7 @@ export default function Blog() {
             <p className="text-gray-600 mt-3 text-sm leading-relaxed">
               {blog.desc}
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

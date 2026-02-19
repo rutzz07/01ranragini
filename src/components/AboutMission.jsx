@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function AboutMission() {
+  const navigate = useNavigate();
   return (
     <section className="bg-gray-100 py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-16 space-y-24">
@@ -33,9 +36,13 @@ export default function AboutMission() {
               to enhance well-being, rooted in both science and traditional wisdom.
             </p>
 
-            <button className="mt-8 bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition">
-              Learn More →
-            </button>
+          <button
+  onClick={() => navigate("/about")}
+  className="mt-8 bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition"
+>
+  Learn More →
+</button>
+
           </div>
         </div>
 
@@ -59,9 +66,12 @@ export default function AboutMission() {
               Together, we’re building a future free from the burden of cancer.
             </p>
 
-            <button className="mt-8 bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition">
-              Learn More →
-            </button>
+                     <button
+  onClick={() => navigate("/shop")}
+  className="mt-8 bg-pink-600 text-white px-8 py-3 rounded-full hover:bg-pink-700 transition"
+>
+  Learn More →
+</button>
           </div>
 
           {/* Image */}

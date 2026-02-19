@@ -1,93 +1,94 @@
 import { FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { products } from "../data/products";
+import { useWishlist } from "../context/WishlistContext";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 export default function BestSeller() {
-  const products = [
-    {
-      id: 1,
-      name: "Amrut Juice – A Complete Ayurvedic Health Tonic",
-      image: "/images/product1.webp",
-      oldPrice: "₹1,999.00",
-      newPrice: "₹1,400.00",
-      sale: true,
-    },
-    {
-      id: 2,
-      name: "Ranragini Herbal Hair Removal Wax Powder – Smooth Skin, Naturally",
-      image: "/images/product2.webp",
-      oldPrice: "₹450.00",
-      newPrice: "₹250.00",
-      sale: true,
-    },
-    {
-      id: 3,
-      name: "Ranragini Panch Tulsi Drops – Nature’s Immunity Booster",
-      image: "/images/product3.webp",
-      oldPrice: "₹450.00",
-      newPrice: "₹350.00",
-      sale: true,
-    },
-    {
-      id: 4,
-      name: "Ranragini Anion Chip Sanitary Pads – Safe & Comfortable",
-      image: "/images/product4.webp",
-      oldPrice: "₹270.00",
-      newPrice: "₹200.00",
-      sale: true,
-    },
-  ];
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   return (
-    <section className="py-20 bg-gray-100 px-6 md:px-16">
+    <section className="py-16 bg-gray-100 px-6 md:px-16">
+
       {/* Heading */}
-      <div className="text-center mb-14">
+      <div className="text-center mb-12">
         <p className="text-gray-400 italic text-lg">By Ranragini</p>
-        <h2 className="text-3xl md:text-4xl font-semibold">Our Bestsellers</h2>
+        <h2 className="text-3xl md:text-4xl font-semibold">
+          Our Bestsellers
+        </h2>
       </div>
 
-      {/* Products Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        navigation
+        autoplay={{ delay: 3000 }}
+        spaceBetween={20}
+        breakpoints={{
+          0: { slidesPerView: 1.5 },
+          480: { slidesPerView: 2 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
+        }}
+      >
         {products.map((product) => (
-          <div key={product.id} className="relative text-center group">
-            {/* SALE Badge */}
-            {product.sale && (
+          <SwiperSlide key={product.id}>
+            <div className="relative text-center group bg-white p-4 rounded-lg shadow-sm">
+
+              {/* SALE Badge */}
               <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-2 py-1 rounded">
                 SALE
               </span>
-            )}
 
-            {/* Heart Icon */}
-            <FaHeart className="absolute top-3 right-3 text-gray-400 hover:text-pink-600 cursor-pointer transition" />
+              {/* Wishlist Heart */}
+              <button
+                onClick={() => toggleWishlist(product)}
+                className={`absolute top-3 right-3 text-lg transition ${
+                  isInWishlist(product.id)
+                    ? "text-pink-600"
+                    : "text-gray-400 hover:text-pink-600"
+                }`}
+              >
+                <FaHeart />
+              </button>
 
-            {/* Circle Background */}
-            <div
-              className="bg-[##C8BFB0] rounded-t-full rounded-b-lg 
-                flex items-end justify-center 
-                h-80 p-6 overflow-hidden"
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-full w-full object-contain transition duration-300 group-hover:scale-105"
-              />
+              {/* Image Clickable */}
+              <Link to={`/product/${product.slug}`}>
+                <div className="h-64 flex items-center justify-center p-4">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="max-h-full object-contain transition duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </Link>
+
+              {/* Name Clickable */}
+              <Link to={`/product/${product.slug}`}>
+                <h3 className="mt-4 text-sm md:text-base font-medium hover:text-pink-600 transition">
+                  {product.name}
+                </h3>
+              </Link>
+
+              {/* Prices */}
+              <div className="mt-2 space-x-2">
+                <span className="text-gray-400 line-through text-sm">
+                  ₹{product.oldPrice}
+                </span>
+                <span className="text-red-600 font-semibold">
+                  ₹{product.price}
+                </span>
+              </div>
+
             </div>
-
-            {/* Product Name */}
-            <h3 className="mt-5 text-sm md:text-base font-medium px-3">
-              {product.name}
-            </h3>
-
-            {/* Prices */}
-            <div className="mt-3 space-x-2">
-              <span className="text-gray-400 line-through text-sm">
-                {product.oldPrice}
-              </span>
-              <span className="text-red-600 font-semibold">
-                {product.newPrice}
-              </span>
-            </div>
-          </div>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
+
     </section>
   );
 }

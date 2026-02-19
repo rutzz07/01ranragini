@@ -1,5 +1,11 @@
 import React from "react";
-import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -17,9 +23,13 @@ export default function Footer() {
 
               <p className="text-gray-600 text-sm mb-2">Need support</p>
 
-              <p className="text-pink-600 font-semibold text-lg">
+              {/* Clickable Phone */}
+              <a
+                href="tel:+917020023262"
+                className="text-pink-600 font-semibold text-lg hover:underline"
+              >
                 Call +91 7020023262
-              </p>
+              </a>
 
               <p className="text-gray-600 text-sm mt-2">
                 Mon – Fri: 09 am – 05 pm
@@ -31,11 +41,31 @@ export default function Footer() {
               <h3 className="text-sm font-semibold uppercase mb-6">
                 Contact Us
               </h3>
+
               <ul className="space-y-3 text-gray-700 text-sm">
-                <li className="hover:text-pink-600 cursor-pointer">About Us</li>
-                <li className="hover:text-pink-600 cursor-pointer">Gallery</li>
-                <li className="hover:text-pink-600 cursor-pointer">Contact Us</li>
-                <li className="hover:text-pink-600 cursor-pointer">FAQs</li>
+                <li>
+                  <Link to="/about" className="hover:text-pink-600">
+                    About Us
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/gallery" className="hover:text-pink-600">
+                    Gallery
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/contact" className="hover:text-pink-600">
+                    Contact Us
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/faqs" className="hover:text-pink-600">
+                    FAQs
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -44,28 +74,43 @@ export default function Footer() {
               <h3 className="text-sm font-semibold uppercase mb-6">
                 Account
               </h3>
+
               <ul className="space-y-3 text-gray-700 text-sm">
-                <li className="hover:text-pink-600 cursor-pointer">Shop</li>
-                <li className="hover:text-pink-600 cursor-pointer">Privacy Policy</li>
-                <li className="hover:text-pink-600 cursor-pointer">Term Of Use</li>
+                <li>
+                  <Link to="/shop" className="hover:text-pink-600">
+                    Shop
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/privacy-policy" className="hover:text-pink-600">
+                    Privacy Policy
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/terms-of-use" className="hover:text-pink-600">
+                    Terms Of Use
+                  </Link>
+                </li>
               </ul>
             </div>
 
             {/* Column 4 - Map */}
-          <div className="rounded overflow-hidden shadow-md">
-  <a
-    href="https://www.google.com/maps/place/300,+Sector+No.+24,+Pradhikaran,+Nigdi,+Pimpri-Chinchwad,+Maharashtra+411044,+India/@18.6584602,73.775355,15z"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <iframe
-      title="map"
-      src="https://maps.google.com/maps?q=300%20Sector%2024%20Nigdi%20Pimpri%20Chinchwad&t=&z=15&ie=UTF8&iwloc=&output=embed"
-      className="w-full h-40 pointer-events-none"
-      loading="lazy"
-    ></iframe>
-  </a>
-</div>
+            <div className="rounded overflow-hidden shadow-md">
+              <a
+                href="https://www.google.com/maps/place/300,+Sector+No.+24,+Pradhikaran,+Nigdi,+Pimpri-Chinchwad,+Maharashtra+411044,+India"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <iframe
+                  title="map"
+                  src="https://maps.google.com/maps?q=300%20Sector%2024%20Nigdi%20Pimpri%20Chinchwad&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-40 pointer-events-none"
+                  loading="lazy"
+                ></iframe>
+              </a>
+            </div>
 
           </div>
         </div>
@@ -79,12 +124,25 @@ export default function Footer() {
 
           <p>Design and Developed by NRBS</p>
 
+          {/* Social Links */}
           <div className="flex items-center gap-4">
             <span>Follow Us On Social:</span>
-            <FaInstagram className="cursor-pointer hover:scale-110 transition" />
-            <FaFacebookF className="cursor-pointer hover:scale-110 transition" />
-            <FaLinkedinIn className="cursor-pointer hover:scale-110 transition" />
-            <FaYoutube className="cursor-pointer hover:scale-110 transition" />
+
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="hover:scale-110 transition cursor-pointer" />
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61574347331721" target="_blank" rel="noopener noreferrer">
+              <FaFacebookF className="hover:scale-110 transition cursor-pointer" />
+            </a>
+
+            <a href="https://www.linkedin.com/in/aarti-bhosale-8a9a77353/" target="_blank" rel="noopener noreferrer">
+              <FaLinkedinIn className="hover:scale-110 transition cursor-pointer" />
+            </a>
+
+            <a href="https://www.youtube.com/@Aartibhosale-y9b" target="_blank" rel="noopener noreferrer">
+              <FaYoutube className="hover:scale-110 transition cursor-pointer" />
+            </a>
           </div>
 
         </div>

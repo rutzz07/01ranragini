@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0128)https://eqjcourts.gov.in/search/samplereport.php?1A=00465&1B=2025&1C=0107&1D=01&Dist_Code=39&Dept_Code=01&State_Code=27&lang=mar -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Untitled Document</title>
+ 
+ 
+ 
+<script src="./Untitled Document18_files/jquery-3.7.1.js.download"></script>
+ 
+<script type="text/javascript">	
+$(document).ready(function(e) {
+var casenum		='00465';
+var caseyear	='2025';
+var pocode		='0107';
+var officecode	='01';
+var DistCode	='39';
+var DeptCode	='01';
+var StateCode	='27';
+var mylang		='mar';
+
+var mygetrep= "rep";
+//alert("sat");
+		$.post("../opt/api_server.php?action="+mygetrep, {Case_Number:btoa(casenum),Case_Year:btoa(caseyear),PO_Code:btoa(pocode),Office_Code:btoa(officecode),Dist_Code:btoa(DistCode),Dept_Code:btoa(DeptCode),State_Code:btoa(StateCode),lang:btoa(mylang)}, 	
+		function(data) {   //alert(data);
+		   
+			$("#content").html(data.trim());
+			
+		});
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="content"><table border="0" width="100%" align="center" style="margin-top:0px;">
+ 	<tbody><tr><td align="right" width="60%"> <font size="+1">विभागीय आयुक्त कार्यालय पुणे याचे न्यायलय<br>Divisional commissioner Office Pune, Addl Comm Cases Pune</font></td>
+ 		<td align="right" width="40%"> Date : 18-02-2026 07:40:26pm</td></tr>
+	</tbody></table><table width="100%" border="1" align="center">
+		 
+		  <tbody><tr bgcolor="#FFCCFF">
+			
+			<td width="9%" rowspan="2">Year &amp; Case Number</td>
+			<td width="11%" rowspan="2">Date of filling</td>
+			<td width="11%" rowspan="2">Whether original or appeal?</td>
+			<td colspan="2" rowspan="1">If appeal, the details of original order</td>
+			 
+			<td width="11%" rowspan="2">Description of the dispute?</td>
+			<td width="12%" rowspan="2">Status</td>
+		  </tr>
+		  <tr bgcolor="#FFCCFF">
+			 
+			 
+			<td width="11%">Name of the lower Authority</td>
+			<td width="11%">Number and date of the  order</td>
+			 
+		  </tr>
+		  <tr>
+			 
+			<td>2025/00465</td>
+			<td>15-07-2025</td> 
+			<td>Revision</td>
+			<td width="11%"></td>
+			<td width="11%">30-04-2025</td>
+			 
+			<td></td>
+			
+			<td>Pending For Decision</td>
+		  </tr>
+		  
+		</tbody></table><table width="80%" border="1" align="center">
+  <tbody><tr bgcolor="#FFFFCC">
+    <td width="8%">Sr.No</td>
+    <td width="42%">Name of the parties to the dispute</td>
+	  </tr><tr>
+    <td width="8%" align="center">1</td>
+    <td width="42%"><font color="#FF0000">Petitioner </font>कांचन कैलास कोद्रे व इतर                                                                                                                                                                                 / Kanchan Kailas Kodre And Others</td></tr><tr>
+    <td width="8%" align="center">2</td>
+    <td width="42%"><font color="#000099">Responders </font>अशोक तुकाराम जाधव                                                                                                                                                                                        / Ashok Tukaram Jadhav</td></tr></tbody></table></div>
+
+
+
+</body></html>

@@ -22,4 +22,20 @@
   color: #ec4899;
 }
 
+
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+.zoom-animation {
+  animation: slowZoom 8s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
