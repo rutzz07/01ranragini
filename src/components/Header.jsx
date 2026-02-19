@@ -126,6 +126,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
        {/* Mobile Right Section */}
+{/* Mobile Right Section */}
 <div className="md:hidden flex items-center gap-4">
 
   <Link to="/search">
@@ -146,7 +147,10 @@ export default function Header() {
     <FaTimes
       size={22}
       className="cursor-pointer"
-      onClick={() => setMobileMenu(false)}
+      onClick={() => {
+        setMobileMenu(false);
+        setMobileShop(false);
+      }}
     />
   ) : (
     <FaBars
@@ -156,70 +160,119 @@ export default function Header() {
     />
   )}
 </div>
-
-      </div>
+</div>
 
       {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-white shadow-md px-6 transition-all duration-300 ${
-          mobileMenu ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
-        }`}
-      >
-        <Link to="/" className="block py-2">
-          Home
-        </Link>
-        <Link to="/about" className="block py-2">
-          About Us
-        </Link>
-
-        {/* Mobile Shop */}
-        <div>
-          <div
-            className="flex justify-between items-center py-2 cursor-pointer"
-            onClick={() => setMobileShop(!mobileShop)}
-          >
-            <span>Shop</span>
-            <FaChevronDown
-              size={12}
-              className={`transition-transform ${mobileShop ? "rotate-180" : ""}`}
-            />
-          </div>
-
-          {mobileShop && (
-            <div className="pl-4 space-y-2 text-sm text-gray-600">
-              {products.map((item, index) => (
-                <Link
-                  key={index}
-                  to={`/product/${item.slug}`}
-                  className="block hover:text-pink-600 transition"
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <Link to="/gallery" className="block py-2">
-          Gallery
-        </Link>
-        <Link to="/blog" className="block py-2">
-          Blog
-        </Link>
-        <Link to="/contact" className="block py-2">
-          Contact
-        </Link>
-        <a
-  href="https://ranragini.in/"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="block mt-4 bg-pink-600 text-white text-center py-2 rounded-full hover:bg-pink-700 transition"
+     {/* Mobile Menu */}
+<div
+  className={`md:hidden bg-white shadow-md px-6 transition-all duration-300 ${
+    mobileMenu ? "max-h-screen py-4" : "max-h-0 overflow-hidden"
+  }`}
 >
-  Our Official Website ↗
-</a>
 
-        
+  <Link
+    to="/"
+    onClick={() => {
+      setMobileMenu(false);
+      setMobileShop(false);
+    }}
+    className="block py-2"
+  >
+    Home
+  </Link>
+
+  <Link
+    to="/about"
+    onClick={() => {
+      setMobileMenu(false);
+      setMobileShop(false);
+    }}
+    className="block py-2"
+  >
+    About Us
+  </Link>
+
+  {/* Mobile Shop */}
+  <div>
+    <div
+      className="flex justify-between items-center py-2 cursor-pointer"
+      onClick={() => setMobileShop(!mobileShop)}
+    >
+      <span>Shop</span>
+      <FaChevronDown
+        size={12}
+        className={`transition-transform ${mobileShop ? "rotate-180" : ""}`}
+      />
+    </div>
+
+    {mobileShop && (
+      <div className="pl-4 space-y-2 text-sm text-gray-600">
+        {products.map((item, index) => (
+          <Link
+            key={index}
+            to={`/product/${item.slug}`}
+            onClick={() => {
+              setMobileMenu(false);
+              setMobileShop(false);
+            }}
+            className="block hover:text-pink-600 transition"
+          >
+            {item.name}
+          </Link>
+        ))}
       </div>
+    )}
+  </div>
+
+  <Link
+    to="/gallery"
+    onClick={() => {
+      setMobileMenu(false);
+      setMobileShop(false);
+    }}
+    className="block py-2"
+  >
+    Gallery
+  </Link>
+
+  <Link
+    to="/blog"
+    onClick={() => {
+      setMobileMenu(false);
+      setMobileShop(false);
+    }}
+    className="block py-2"
+  >
+    Blog
+  </Link>
+
+  <Link
+    to="/contact"
+    onClick={() => {
+      setMobileMenu(false);
+      setMobileShop(false);
+    }}
+    className="block py-2"
+  >
+    Contact
+  </Link>
+
+  {/* Official Website */}
+  <a
+    href="https://ranragini.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => {
+      setMobileMenu(false);
+      setMobileShop(false);
+    }}
+    className="block mt-4 bg-pink-600 text-white text-center py-2 rounded-full hover:bg-pink-700 transition"
+  >
+    Our Official Website ↗
+  </a>
+
+</div>
+
     </header>
   );
 }
