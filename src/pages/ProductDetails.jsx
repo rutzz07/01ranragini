@@ -14,6 +14,14 @@ export default function ProductDetails() {
     return <div className="p-20 text-center">Product Not Found</div>;
   }
 
+  const handleWhatsAppInquiry = () => {
+    const phoneNumber = "917020023262"; // WhatsApp format: +91 + number
+    const message = `Hi, I'm interested in ${product.name}. Can you provide more details?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div className="container mx-auto px-6 py-16">
       <div className="grid md:grid-cols-2 gap-16">
@@ -66,7 +74,9 @@ export default function ProductDetails() {
             {product.description}
           </p>
 
-          <button className="mt-8 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded">
+          <button 
+            onClick={handleWhatsAppInquiry}
+            className="mt-8 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded">
             WhatsApp Enquiry
           </button>
 

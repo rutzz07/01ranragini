@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import products from "../data/products";
 
-const productsData = [
+const productsData = products.length > 0 ? products : [
   {
     id: 1,
     name: "Amrut Juice – A Complete Ayurvedic Health Tonic",
@@ -52,12 +54,17 @@ const productsData = [
 ];
 
 export default function Shop() {
+  const navigate = useNavigate();
   const [priceRange, setPriceRange] = useState([0, 2000]);
   const [featuredOnly, setFeaturedOnly] = useState(false);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
   const [sort, setSort] = useState("default");
+
+  const handleProductClick = (product) => {
+    navigate(`/product/${product.slug}`);
+  };
 
     let filteredProducts = productsData.filter((product) => {
     return (
@@ -148,7 +155,8 @@ export default function Shop() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-[#cfc6b8] p-6 rounded-t-full relative text-center"
+              onClick={() => handleProductClick(product)}
+              className="bg-[#cfc6b8] p-6 rounded-t-full relative text-center cursor-pointer hover:shadow-lg transition-shadow"
             >
               {product.sale && (
                 <span className="absolute top-4 left-4 bg-red-500 text-white text-xs px-2 py-1 rounded">
